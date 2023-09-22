@@ -1,11 +1,11 @@
 package com.products;
 
-public class MilkDiscount extends BaseDiscount {
-    public MilkDiscount() {
+public class QuantityDiscount extends BaseDiscount {
+    public QuantityDiscount() {
 
     }
 
-    public MilkDiscount(Discount nexDiscount) {
+    public QuantityDiscount(Discount nexDiscount) {
         this.nexDiscount = nexDiscount;
     }
 
@@ -28,19 +28,19 @@ public class MilkDiscount extends BaseDiscount {
             nextDiscountDescription = nexDiscount.getDescription(product);
         }
         if(isApplicable(product)) {
-            return nextDiscountDescription + "5% discount on milk,";
+            return nextDiscountDescription + "10kr discount per product if you buy at least 4,";
         }
         return "";
     }
 
     @Override
     protected boolean isApplicable(Product product) {
-        return product.name() == "MILK";
+        return product.quantity() > 4;
     }
 
     @Override
     protected double calculateDiscount(Product product) {
-        return product.price() * product.quantity() * 0.05;
+        return product.quantity() * 10.0;
     }
     
 }

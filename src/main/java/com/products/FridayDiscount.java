@@ -27,8 +27,14 @@ public class FridayDiscount extends BaseDiscount {
 
     @Override
     public String getDescription(Product product) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDescription'");
+        String nextDiscountDescription = "";
+        if(nexDiscount != null) {
+            nextDiscountDescription = nexDiscount.getDescription(product);
+        }
+        if(isApplicable(product)) {
+            return nextDiscountDescription + "10% discount on Fridays,";
+        }
+        return "";
     }
 
     @Override
@@ -38,7 +44,7 @@ public class FridayDiscount extends BaseDiscount {
 
     @Override
     protected double calculateDiscount(Product product) {
-        return product.price() * 0.1;
+        return product.price() * product.quantity() * 0.1;
     }
     
 }
