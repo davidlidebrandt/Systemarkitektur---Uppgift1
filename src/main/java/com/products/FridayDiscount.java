@@ -16,19 +16,12 @@ public class FridayDiscount extends BaseDiscount {
 
     @Override
     public String getDescription(Product product) {
-        String nextDiscountDescription = "";
-        if(nexDiscount != null) {
-            nextDiscountDescription = nexDiscount.getDescription(product);
-        }
-        if(isApplicable(product)) {
-            return nextDiscountDescription + "10% discount on Fridays,";
-        }
-        return "";
+        return super.getDescription(product, "10% discount on Fridays,");
     }
 
     @Override
     protected boolean isApplicable(Product product) {
-        return LocalDate.now().getDayOfWeek() == DayOfWeek.SATURDAY;
+        return LocalDate.now().getDayOfWeek() == DayOfWeek.FRIDAY;
     }
 
     @Override

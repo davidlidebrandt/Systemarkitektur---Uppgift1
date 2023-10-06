@@ -9,16 +9,9 @@ public class QuantityDiscount extends BaseDiscount {
         this.nexDiscount = nexDiscount;
     }
 
-      @Override
+    @Override
     public String getDescription(Product product) {
-        String nextDiscountDescription = "";
-        if(nexDiscount != null) {
-            nextDiscountDescription = nexDiscount.getDescription(product);
-        }
-        if(isApplicable(product)) {
-            return nextDiscountDescription + "10kr discount per product if you buy at least 4,";
-        }
-        return "";
+        return super.getDescription(product, "10kr discount per product if you buy at least 4,");
     }
 
     @Override
