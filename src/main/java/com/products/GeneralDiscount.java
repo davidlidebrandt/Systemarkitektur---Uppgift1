@@ -26,9 +26,9 @@ public class GeneralDiscount {
         }
 
         if (isApplicable.apply(product)) {
-            return nextDiscountSum + calculateDiscount.apply(product);
+            nextDiscountSum += calculateDiscount.apply(product);
         }
-        return 0.0;
+        return nextDiscountSum;
     }
 
 }

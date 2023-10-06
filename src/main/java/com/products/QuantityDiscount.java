@@ -9,19 +9,7 @@ public class QuantityDiscount extends BaseDiscount {
         this.nexDiscount = nexDiscount;
     }
 
-    @Override
-    public double apply(Product product) {
-        double nextDiscountSum = 0;
-        if(nexDiscount != null) {
-            nextDiscountSum = nexDiscount.apply(product);
-        }
-        if(isApplicable(product)) {
-            return nextDiscountSum + calculateDiscount(product);
-        }
-        return 0;
-    }
-
-    @Override
+      @Override
     public String getDescription(Product product) {
         String nextDiscountDescription = "";
         if(nexDiscount != null) {

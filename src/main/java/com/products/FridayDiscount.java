@@ -13,17 +13,6 @@ public class FridayDiscount extends BaseDiscount {
         this.nexDiscount = nexDiscount;
     }
 
-    @Override
-    public double apply(Product product) {
-        double nextDiscountSum = 0;
-        if(nexDiscount != null) {
-            nextDiscountSum = nexDiscount.apply(product);
-        }
-        if(isApplicable(product)) {
-            return nextDiscountSum + calculateDiscount(product);
-        }
-        return 0;
-    }
 
     @Override
     public String getDescription(Product product) {
@@ -39,7 +28,7 @@ public class FridayDiscount extends BaseDiscount {
 
     @Override
     protected boolean isApplicable(Product product) {
-        return LocalDate.now().getDayOfWeek() == DayOfWeek.FRIDAY;
+        return LocalDate.now().getDayOfWeek() == DayOfWeek.SATURDAY;
     }
 
     @Override
